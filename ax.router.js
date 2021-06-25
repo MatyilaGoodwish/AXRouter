@@ -30,6 +30,16 @@ location.replace("#/");
 
  
 function routesConfig() {
+
+     function registerRoute(requestUrl, filePath,  container){
+          if (hash.match(`#/${requestUrl}`)) {
+               this.getTemplate(filePath)
+                    .then(data => document.querySelector(container).innerHTML = data)
+          }else{
+               document.querySelector(container).innerHTML = "404 not found";
+          }
+     }
+
      /**
       * @params takes the full path of the template and filename
       */
@@ -50,4 +60,29 @@ function routesConfig() {
           this.getTemplate("views/disclaimer.html")
                .then(data => document.querySelector("#main").innerHTML = data)
      }
+     if (hash.match("#/terms")) {
+          this.getTemplate("views/terms.html")
+               .then(data => document.querySelector("#main").innerHTML = data)
+     }
+     if (hash.match("#/process")) {
+          this.getTemplate("views/process.html")
+               .then(data => document.querySelector("#main").innerHTML = data)
+     }
+     if (hash.match("#/contact")) {
+          this.getTemplate("views/contact.html")
+               .then(data => document.querySelector("#main").innerHTML = data)
+     }
+     if (hash.match("#/")) {
+          this.getTemplate("views/home.html")
+               .then(data => document.querySelector("#main").innerHTML = data)
+     }
+     if (hash.match("#/services")) {
+          this.getTemplate("views/services.html")
+               .then(data => document.querySelector("#main").innerHTML = data)
+     }
+     if (hash.match("#/pricing")) {
+          this.getTemplate("views/pricing.html")
+               .then(data => document.querySelector("#main").innerHTML = data)
+     }
+     
 }
