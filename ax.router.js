@@ -23,6 +23,10 @@ const urlLocation = new function () {
 /* Attach Event */
 browserWindowObject.addEventListener('hashchange', routesConfig.bind(urlLocation));
 
+//set initial location path
+location.replace("#/");
+
+
 function routesConfig() {
      /**
       * @params takes the full path of the template and filename
