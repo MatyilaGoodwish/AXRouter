@@ -1,5 +1,5 @@
 /***
- * @Name AXRouter
+ * @Name AxRouter
  * @Description Uses Location Object in the Browser window bound to events 
  * @Implements Router using fetch to get HTML templates to render page views via AJAX
  * @Version 0.0.1
@@ -20,13 +20,15 @@ const urlLocation = new function () {
                return templateData;
           }
 }
+
+
 /* Attach Event */
 browserWindowObject.addEventListener('hashchange', routesConfig.bind(urlLocation));
 
 //set initial location path
 location.replace("#/");
 
-
+ 
 function routesConfig() {
      /**
       * @params takes the full path of the template and filename
@@ -36,8 +38,16 @@ function routesConfig() {
      } = this.url;
 
      /* Write your routes here using conditionals  */
-     if (hash.match("#/services")) {
+     if (hash.match("#/social-media-marketing")) {
           this.getTemplate("views/social-imc.html")
-               .then(data => document.querySelector("#content").innerHTML = data)
+               .then(data => document.querySelector("#main").innerHTML = data)
+     }
+     if (hash.match("#/privacy")) {
+          this.getTemplate("views/privacy.html")
+               .then(data => document.querySelector("#main").innerHTML = data)
+     }
+     if (hash.match("#/disclaimer")) {
+          this.getTemplate("views/disclaimer.html")
+               .then(data => document.querySelector("#main").innerHTML = data)
      }
 }
